@@ -2,6 +2,7 @@ package format
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -23,13 +24,24 @@ func Format(path string) error {
 		go formatFile(filePath, errChan)
 	}
 
+	var errs []string
+	for i := 0; i < len(filePaths); i++ {
+		if err := <-errChan; err != nil {
+			errs = append(errs, err.Error())
+		}
+	}
+
 	close(errChan)
 
-	// TODO: Handle set of errors
-	for err := range errChan {
-		if err != nil {
-			return err
+	if len(errs) > 0 {
+		var sb strings.Builder
+		sb.WriteString("encountered the following errors:\n")
+		for _, e := range errs {
+			sb.WriteString("- ")
+			sb.WriteString(e)
+			sb.WriteString("\n")
 		}
+		return errors.New(sb.String())
 	}
 
 	return nil
@@ -71,7 +83,7 @@ func formatContent(content string) (string, error) {
 	args := []string{}
 
 	_, f, _, _ := runtime.Caller(0)
-	toolDirectory := filepath.Join(filepath.Dir(f), "/tools/pg_format")
+	toolDirectory := filepath.Join(filepath.Dir(f), "tools/pg_format")
 	cmd := exec.Command("perl", append([]string{toolDirectory}, args...)...)
 
 	// Set up input and output buffers
