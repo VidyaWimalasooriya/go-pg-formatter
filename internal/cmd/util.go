@@ -90,12 +90,3 @@ func getInt(flags *pflag.FlagSet, name string) int {
 
 	return val
 }
-
-func getString(flags *pflag.FlagSet, name string) string {
-	val, err := flags.GetString(name)
-	if err != nil {
-		log.Fatalf("Error retrieving %s flag: %v", name, err)
-	}
-
-	return val
-}
