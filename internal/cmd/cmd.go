@@ -49,5 +49,5 @@ func init() {
 	rootCmd.Flags().BoolP("tabs", "T", false, "use tabs instead of space characters, when used spaces is set to 1 whatever is the value set to -s.")
 	rootCmd.Flags().BoolP("comma-break", "B", false, "in insert statement, add a newline after each comma.")
 
-	//TODP - Support for more flags
+	//TODO - Support for more flags
 }
