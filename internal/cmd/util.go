@@ -11,10 +11,10 @@ func getConfig(flags *pflag.FlagSet) []string {
 	config := configurationType{
 		Anonymize:     setDefault(flags.Changed("anonymize"), false),
 		CommaBreak:    setDefault(flags.Changed("comma-break"), false),
-		FunctionCase:  setDefault(getInt(flags, "function-case"), 0),
+		CommaEnd:      setDefault(flags.Changed("comma-end"), false),
+		CommaStart:    setDefault(flags.Changed("comma-start"), false),
 		KeywordCase:   setDefault(getInt(flags, "keyword-case"), 2),
 		NoRcFile:      setDefault(flags.Changed("no-rcfile"), false),
-		Placeholder:   setDefault(getString(flags, "placeholder"), ""),
 		Spaces:        setDefault(getInt(flags, "spaces"), 4),
 		StripComments: setDefault(flags.Changed("nocomment"), false),
 		Tabs:          setDefault(flags.Changed("tabs"), false),
@@ -30,6 +30,14 @@ func mapArgs(config configurationType) []string {
 		args = append(args, "--anonymize")
 	}
 
+	if config.CommaStart {
+		args = append(args, "--comma-start")
+	}
+
+	if config.CommaStart {
+		args = append(args, "--comma-end")
+	}
+
 	if config.FunctionCase < 4 && config.FunctionCase >= 0 {
 		args = append(args, "--function-case", strconv.Itoa(config.FunctionCase))
 	}
@@ -43,7 +51,7 @@ func mapArgs(config configurationType) []string {
 	}
 
 	if config.Placeholder != "" {
-		args = append(args, "--placeholder", config.Placeholder)
+		args = append(args, "--placeholder", `'`+config.Placeholder+`'`)
 	}
 
 	if config.Spaces > 0 {

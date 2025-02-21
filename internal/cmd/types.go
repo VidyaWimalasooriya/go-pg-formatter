@@ -1,13 +1,15 @@
 package cmd
 
 type configurationType struct {
-	Anonymize     bool   `json:"anonymize,omitempty"`
-	CommaBreak    bool   `json:"commaBreak,omitempty"`
-	FunctionCase  int    `json:"functionCase,omitempty"`
-	KeywordCase   int    `json:"keywordCase,omitempty"`
-	NoRcFile      bool   `json:"noRcFile,omitempty"`
-	Placeholder   string `json:"placeholder,omitempty"`
-	Spaces        int    `json:"spaces,omitempty"`
-	StripComments bool   `json:"stripComments,omitempty"`
-	Tabs          bool   `json:"tabs,omitempty"`
+	Anonymize     bool
+	CommaBreak    bool
+	CommaEnd      bool
+	CommaStart    bool
+	FunctionCase  int
+	KeywordCase   int
+	NoRcFile      bool
+	Placeholder   string
+	Spaces        int
+	StripComments bool
+	Tabs          bool
 }
