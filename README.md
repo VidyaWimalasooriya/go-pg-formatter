@@ -3,6 +3,8 @@
 [![Go](https://img.shields.io/badge/Go-1.23-blue)](https://golang.org/)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
+![MyLibrary](https://github.com/VidyaWimalasooriya/go-pg-formatter/icon.png)
+
 `go-pg-formatter` is a Go library and command-line tool for formatting SQL or PostgreSQL files or queries.
 
 This project is a lightweight wrapper around [pgFormatter](https://github.com/darold/pgFormatter). It requires Perl to be installed on the host system for execution.
