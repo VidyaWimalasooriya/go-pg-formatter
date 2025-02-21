@@ -47,6 +47,29 @@ func Format(path string, args ...string) error {
 	return nil
 }
 
+func FormatSQLString(filePath string, args ...string) (str string, err error) {
+	// Open the file
+	file, err := os.Open(filePath)
+	if err != nil {
+		return "", err
+	}
+
+	defer file.Close()
+
+	// Read the entire file content
+	content, err := io.ReadAll(file)
+	if err != nil {
+		return "", err
+	}
+
+	formattedData, err := formatContent(string(content), args...)
+	if err != nil {
+		return "", err
+	}
+
+	return formattedData, nil
+}
+
 func formatFile(filePath string, ch chan error, args ...string) {
 	// Open the file
 	file, err := os.Open(filePath)

@@ -34,7 +34,7 @@ func mapArgs(config configurationType) []string {
 		args = append(args, "--comma-start")
 	}
 
-	if config.CommaStart {
+	if config.CommaEnd {
 		args = append(args, "--comma-end")
 	}
 
