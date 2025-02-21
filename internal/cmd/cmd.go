@@ -15,13 +15,14 @@ var rootCmd = &cobra.Command{
 	Long:  `This command allows you to format SQL (.sql) and PostgreSQL (.pgsql) files or inline queries using a Go-based formatting library.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		path, _ := cmd.Flags().GetString("destination-path")
+		arguments := getConfig(cmd.Flags())
 
 		// Check if a file was provided
 		if path == "" {
 			return fmt.Errorf("\033[31mno path specified\033[0m")
 		}
 
-		if err := format.Format(path); err != nil {
+		if err := format.Format(path, arguments...); err != nil {
 			return fmt.Errorf("\033[31m%s\033[0m", err.Error())
 		}
 
@@ -37,5 +38,16 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.PersistentFlags().StringP("destination-path", "d", "", "Destination file path")
+	rootCmd.Flags().StringP("destination-path", "d", "", "Destination file path")
+	rootCmd.Flags().BoolP("anonymize", "a", false, "obscure all literals in queries, useful to hide confidential data before formatting.")
+	rootCmd.Flags().IntP("function-case", "f", 0, "Change the case of the PostgreSQL functions. Default is unchanged: 0. Values: 0=>unchanged, 1=>lowercase, 2=>uppercase, 3=>capitalize.h")
+	rootCmd.Flags().IntP("keyword-case", "u", 2, "Change the case of the reserved keyword. Default is uppercase: 2. Values: 0=>unchanged, 1=>lowercase, 2=>uppercase, 3=>capitalize.")
+	rootCmd.Flags().BoolP("no-rcfile", "X", false, "don't read rc files automatically (./.pg_format or $HOME/.pg_format or $XDG_CONFIG_HOME/pg_format).")
+	rootCmd.Flags().StringP("placeholder", "p", "", "set regex to find code that must not be changed.")
+	rootCmd.Flags().IntP("spaces", "s", 4, "change space indent, default 4 spaces.")
+	rootCmd.Flags().BoolP("nocomment", "n", false, "remove any comment from SQL code.")
+	rootCmd.Flags().BoolP("tabs", "T", false, "use tabs instead of space characters, when used spaces is set to 1 whatever is the value set to -s.")
+	rootCmd.Flags().BoolP("comma-break", "B", false, "in insert statement, add a newline after each comma.")
+
+	//TODP - Support for more flags
 }

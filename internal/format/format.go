@@ -12,7 +12,7 @@ import (
 	"strings"
 )
 
-func Format(path string) error {
+func Format(path string, args ...string) error {
 	// Find files need to be formatted
 	filePaths, err := findFiles(path)
 	if err != nil {
@@ -21,7 +21,7 @@ func Format(path string) error {
 
 	errChan := make(chan error)
 	for _, filePath := range filePaths {
-		go formatFile(filePath, errChan)
+		go formatFile(filePath, errChan, args...)
 	}
 
 	var errs []string
@@ -47,7 +47,7 @@ func Format(path string) error {
 	return nil
 }
 
-func formatFile(filePath string, ch chan error) {
+func formatFile(filePath string, ch chan error, args ...string) {
 	// Open the file
 	file, err := os.Open(filePath)
 	if err != nil {
@@ -64,7 +64,7 @@ func formatFile(filePath string, ch chan error) {
 		return
 	}
 
-	formattedData, err := formatContent(string(content))
+	formattedData, err := formatContent(string(content), args...)
 	if err != nil {
 		ch <- err
 		return
@@ -79,9 +79,7 @@ func formatFile(filePath string, ch chan error) {
 	ch <- nil
 }
 
-func formatContent(content string) (string, error) {
-	args := []string{}
-
+func formatContent(content string, args ...string) (string, error) {
 	_, f, _, _ := runtime.Caller(0)
 	toolDirectory := filepath.Join(filepath.Dir(f), "tools/pg_format")
 	cmd := exec.Command("perl", append([]string{toolDirectory}, args...)...)
