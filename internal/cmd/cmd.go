@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"go-pg-formatter/internal/format"
+	"github.com/VidyaWimalasooriya/go-pg-formatter/internal/format"
 )
 
 var rootCmd = &cobra.Command{

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go-pg-formatter/internal/cmd"
+	"github.com/VidyaWimalasooriya/go-pg-formatter/internal/cmd"
 )
 
 func main() {
