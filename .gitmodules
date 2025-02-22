@@ -1,0 +1,3 @@
+[submodule "internal/format/tools"]
+	path = internal/format/tools
+	url = https://github.com/darold/pgFormatter
