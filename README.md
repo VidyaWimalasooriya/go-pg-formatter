@@ -14,13 +14,13 @@ This project is a lightweight go lang wrapper around [pgFormatter](https://githu
 To install `go-pg-formatter`, you can use `go get`:
 
 ```sh
-go get github.com/yourusername/go-pg-formatter
+go get github.com/VidyaWimalasooriya/go-pg-formatter
 ```
 
 or 
 
 ```sh
-go install github.com/yourusername/go-pg-formatter
+go install github.com/VidyaWimalasooriya/go-pg-formatter
 ```
 
 ## Usage
