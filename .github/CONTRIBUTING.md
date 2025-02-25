@@ -9,6 +9,7 @@ Getting Started
 ```
 git clone https://github.com/YOUR_GITHUB_USERNAME/go-pg-formatter.git
 cd go-pg-formatter
+git submodule update --init --recursive
 ```
 
 #### 2. Set Up Your Development Environment
