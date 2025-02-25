@@ -1,37 +1,37 @@
-# go-pg-formatter
+# go-pgfmt
 
 [![Go](https://img.shields.io/badge/Go-1.23-blue)](https://golang.org/)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-![MyLibrary](https://github.com/VidyaWimalasooriya/go-pg-formatter/blob/main/logo.png)
+![MyLibrary](https://github.com/VidyaWimalasooriya/go-pgfmt/blob/main/logo.png)
 
-`go-pg-formatter` is a Go library and command-line tool for formatting SQL or PostgreSQL files or queries.
+`go-pgfmt` is a Go library and command-line tool for formatting SQL or PostgreSQL files or queries.
 
 This project is a lightweight go lang wrapper around [pgFormatter](https://github.com/darold/pgFormatter) CLI tool. It requires Perl to be installed on the host system for execution.
 
 ## Installation
 
-To install `go-pg-formatter`, you can use `go get`:
+To install `go-pgfmt`, you can use `go get`:
 
 ```sh
-go get github.com/VidyaWimalasooriya/go-pg-formatter
+go get github.com/VidyaWimalasooriya/go-pgfmt
 ```
 
 or 
 
 ```sh
-go install github.com/VidyaWimalasooriya/go-pg-formatter
+go install github.com/VidyaWimalasooriya/go-pgfmt@latest
 ```
 
 ## Usage
-You can use `go-pg-formatter` as a command-line tool to format SQL files or queries. Below are some examples of how to use the tool.
+You can use `go-pgfmt` as a command-line tool to format SQL files or queries. Below are some examples of how to use the tool.
 
 ```sh
-pgfmt --destination-path <path> [flags]
+go-pgfmt --destination-path <path> [flags]
 ```
 
 ```sh
-pgfmt --destination-path ./sql --spaces 2 --keyword-case 1
+go-pgfmt --destination-path ./sql --spaces 2 --keyword-case 1
 ```
 
 ## Flags
