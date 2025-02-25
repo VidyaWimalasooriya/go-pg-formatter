@@ -22,7 +22,23 @@ or
 ```sh
 go install github.com/VidyaWimalasooriya/go-pgfmt@latest
 ```
-you need to `Perl` install in your system.
+you need to `Perl` install in your system. [This](https://github.com/darold/pgFormatter) submodule is a dependency that needs to be in your system.
+
+OR
+
+easily you can clone the repo as follows,
+
+``` 
+git clone --recursive https://github.com/VidyaWimalasooriya/go-pgfmt.git
+cd go-pgfmt
+make install
+```
+
+if you want to clean the env,
+
+```
+make clean
+```
 
 ## Usage
 You can use `go-pgfmt` as a command-line tool to format SQL files or queries. Below are some examples of how to use the tool.
