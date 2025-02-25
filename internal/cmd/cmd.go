@@ -10,7 +10,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "pgfmt",
+	Use:   "go-pgfmt",
 	Short: "Go library for formatting SQL or PostgreSQL files or queries",
 	Long:  `This command allows you to format SQL (.sql) and PostgreSQL (.pgsql) files or inline queries using a Go-based formatting library.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
