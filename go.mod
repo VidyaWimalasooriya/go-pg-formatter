@@ -1,5 +1,5 @@
 // License: MIT
-module github.com/VidyaWimalasooriya/go-pg-formatter
+module github.com/VidyaWimalasooriya/go-pgfmt
 
 go 1.23.3
 
