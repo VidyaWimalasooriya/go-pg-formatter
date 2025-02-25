@@ -22,6 +22,7 @@ or
 ```sh
 go install github.com/VidyaWimalasooriya/go-pgfmt@latest
 ```
+you need to `Perl` install in your system.
 
 ## Usage
 You can use `go-pgfmt` as a command-line tool to format SQL files or queries. Below are some examples of how to use the tool.
